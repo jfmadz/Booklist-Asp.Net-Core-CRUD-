@@ -8,14 +8,53 @@
 
     </div>
     <div class="col-3">
-        <a class="btn btn-info form-control text-white">Create New Book</a>
+        <a asp-page="Create" class="btn btn-info form-control text-white">Create New Book</a>
     </div>
 
     <div class="col-12 border p-3 mt-3">
         <form method="post">
-            @if(Model.books.Count()>0)
+            @if (Model.books.Count() > 0)
             {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="books.FirstOrDefault().Name"></label>
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(m => m.books.FirstOrDefault().Author)*@
 
+                            <label asp-for="books.FirstOrDefault().Author"></label>
+
+                        </th>
+                        <th>
+                            <label asp-for="books.FirstOrDefault().ISBN"></label>
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.books)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.ISBN)
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                        <a asp-page="Edit" asp-route-id="@item.ID" class="btn btn-success btn-sm text-white">Edit</a>
+                    </td>
+
+                </tr>
+                    }
+
+                </table>
             }
             else
             {

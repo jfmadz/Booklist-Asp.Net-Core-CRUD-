@@ -12,10 +12,13 @@ namespace Booklist.Model
         public int ID { get; set; }
 
         [Required(ErrorMessage ="Cannot be blank")]
-        [Display(Name ="Name of Book")]
+        //[Display(Name ="Name of Book")]
         public string Name { get; set; }
 
         public string Author { get; set; }
+
+        public string ISBN { get; set; }
+
 
     }
 }
